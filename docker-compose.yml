@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  verticalslicearchitecture.webapi:
+    image: ${DOCKER_REGISTRY-}verticalslicearchitecturewebapi
+    build:
+      context: .
+      dockerfile: src/VerticalSliceArchitecture.WebApi/Dockerfile
+  sqlserver.db:
+      image: mcr.microsoft.com/mssql/server:2022-latest
+      container_name: sqlserver.db.verticalslicearchitecture
+      restart: always
+      environment:
+        SA_PASSWORD: Password12*
+        ACCEPT_EULA : "Y"
+      ports:
+        - "1433:1433"
+      volumes:
+        - sqlserver-data-verticalslicearchitecture:/var/opt/mssql

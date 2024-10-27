@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  verticalslicearchitecture.webapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ConnectionStrings:SqlServer=Server=sqlserver.db,1433;Database=Microservice1new;User Id=sa;Password=Password12*;
+    ports:
+      - "5003:8080"
+volumes:
+  sqlserver-data-verticalslicearchitecture:
